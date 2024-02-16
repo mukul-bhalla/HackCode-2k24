@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        folder: "User Management App",
+        folder: "HackCode",
         allowedFormats: ['jpeg', 'png', 'jpg']
     }
 });

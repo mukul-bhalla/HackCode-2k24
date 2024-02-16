@@ -6,6 +6,18 @@ const ImageSchema = new mongoose.Schema({
     filename: String
 
 })
+const consumptionSchema = new mongoose.Schema({
+    date: {
+        type: Date,
+        default: Date.now
+    },
+
+    fuelType: {
+        type: String,
+        enum: ['petrol', 'diesel', 'cng', 'electric', 'na']
+    },
+    electricityUsed: Number
+})
 ImageSchema.virtual('profile').get(function () {
     return this.url.replace('/upload', '/upload/c_thumb,g_face,h_200,w_200');
 
@@ -34,8 +46,8 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: false
     },
-    profile: ImageSchema
-
+    profile: ImageSchema,
+    consumption: [consumptionSchema]
 
 })
 

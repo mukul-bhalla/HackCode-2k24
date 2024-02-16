@@ -59,6 +59,8 @@ app.use('/user', users)
 app.get('/', (req, res) => {
     res.render('homepage')
 })
+
+
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found !', 404));
 })

@@ -79,11 +79,25 @@ router.post('/login2', async (req, res) => {
     }
 
 })
+router.get('/:id/calculator', async (req, res) => {
+    const { id } = req.params;
+    const user = await User.findById(id);
+    res.render('carbonCalculator', { user })
+})
 
+router.post('/:id/calculator', requireLogin, catchAsync(async (req, res) => {
+    const { fuel, electricityUsed, fuelType } = req.body;
+    const { id } = req.params;
+    const user = await User.findById(id);
+    user.consumption.push({ fuelType: fuelType, electricityUsed: electricityUsed, fuel: fuel })
+    await user.save();
+    res.redirect('/')
+
+}))
 router.post('/logout', (req, res) => {
     req.session.user_id = null;
     req.flash('success', "Successfully Logged Out !");
-    res.redirect('/');
+    res.redirect(`/user/${user._id}>`);
 
 })
 
