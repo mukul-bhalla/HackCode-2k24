@@ -1,0 +1,59 @@
+<%- layout('layouts/boilerplate')%>
+    <div class="row mt-3">
+        <div class="col-md-4 offset-md-4">
+            <h1 class="text-center mb-3">Welcome !!</h1>
+            <div class="card">
+                <img src="<%= user.profile.profile %>" class="card-img-top " alt="Profile Pic">
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        <%= user.name %>
+                    </h5>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center">
+                            <%= user.email %>
+                        </li>
+                        <li class="list-group-item text-center">
+                            <%= user.phone %>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="d-grid gap-* mt-3">
+
+                                <a href="/user/<%= user._id %>/edit" class="btn btn-primary ">Edit</a>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+
+                            <form action=" /user/<%=user._id %>?_method=DELETE" method="POST">
+                                <div class="d-grid gap-* mt-3">
+
+                                    <button class="btn btn-danger">Delete</button>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="list-group-item">
+                            <form action="/user/logout" method="POST">
+                                <div class="d-grid gap-* mt-3">
+
+                                    <button class="btn btn-warning">Sign Out</button>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-grid gap-* mt-3">
+
+                <a href="/" class="btn btn-secondary ">Home</a>
+            </div>
+
+            <% if (user.isAdmin) { %>
+                <div class="d-grid gap-* mt-3 mb-3">
+
+                    <a href="/user/index" class="btn btn-success"> Show All User</a>
+                </div>
+                <% } %>
+
+        </div>
+    </div>
