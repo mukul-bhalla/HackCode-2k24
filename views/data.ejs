@@ -1,0 +1,56 @@
+<%- layout('layouts/boilerplate')%>
+    <div class="row mt-4">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="mb-4">Carbon Emission</h1>
+            <div class="card">
+                <h5 class="card-title">
+                    <%= user.name %>
+                </h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Carbon Footprint Due to Electricty Used (Monthly):</b>
+                        <%= 0.9*electricityUsed %> kilograms
+                    </li>
+
+                    <% if (fuelType=='petrol' ) { %>
+                        <li class="list-group-item"> <b> Carbon Footprint Due to Fuel Used (Monthly):</b>
+                            <%= 2.3*fuel%>
+                                kilograms
+                        </li>
+                        <% } %>
+
+                            <% if (fuelType=='diesel' ) { %>
+                                <li class="list-group-item"><b> Carbon Footprint Due to Fuel Used (Monthly):</b>
+                                    <%= 2.7*fuel%>
+                                        kilograms
+                                </li>
+                                <% } %>
+
+                                    <% if (fuelType=='cng' ) { %>
+                                        <li class="list-group-item"><b> Carbon Footprint Due to Fuel Used (Monthly):</b>
+                                            <%= 1.9*fuel%> kilograms
+                                        </li>
+                                        <% } %>
+
+                                            <% if (fuelType=='electric' || fuelType=='na' ) { %>
+                                                <li class="list-group-item"><b> Carbon Footprint Due to Fuel Used
+                                                        (Monthly):</b>
+                                                    <%= 0*fuel%> kilograms
+                                                </li>
+                                                <% } %>
+
+
+                </ul>
+                <div class="card-footer">
+                    These values are approx
+                </div>
+            </div>
+            <div class="d-grid gap-* mt-3">
+
+                <a href="/user/<%= user._id %>" class="btn btn-primary ">Back to Profile Page</a>
+            </div>
+            <div class="d-grid gap-* mt-3">
+
+                <a href="/" class="btn btn-secondary ">Home</a>
+            </div>
+        </div>
+    </div>

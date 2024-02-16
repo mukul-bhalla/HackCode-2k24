@@ -14,7 +14,7 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
             <div>
-                <h3 class="float-md-left mb-0">Green Nest</h3>
+                <h3 class="float-md-left mb-0"><a class="navbar-brand" href="/"> &#127795;</a>Green Nest</h3>
                 <nav class="nav nav-masthead justify-content-center float-md-right">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                     <% if (currentUser==null) { %>
@@ -24,20 +24,29 @@
                         <% } else { %>
 
                             <a class="nav-link" href="/user/<%= currentUser %>">View Profile</a>
-                            <form action="/user/logout" method="post">
+                            <a class="nav-link" href="/user/logout">Logout</a>
+                            <!-- <form action="/user/logout" method="post">
                                 <a class="nav-link" href="/user/logout"> <button
                                         class="btn btn-unstyled nav-link">Logout</button></a>
-                            </form>
+                            </form> -->
                             <% } %>
 
                 </nav>
             </div>
         </header>
         <main class="px-3">
-            <h1>Welcome !
-            </h1>
+            <!-- <div id="container"></div> -->
+            <p class="lead">
+            <h1> <b>Welcome to Green Nest!</b></h1> <br> Explore our app and its services for a better and green
+            environment. <br><br>
+            "Sustainable development is the pathway to the future we want for all. It offers a framework to generate
+            economic growth, achieve social justice, exercise environmental stewardship, and strengthen governance."
+            - Ban Ki-moon
+
+
 
         </main>
+
 
         <footer class="mt-auto text-white-50 ">
             <p>&copy; 2024 </p>
@@ -46,6 +55,10 @@
 
 
     </div>
+    <script src="index.js"></script>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

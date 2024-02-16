@@ -89,17 +89,24 @@ router.post('/:id/calculator', requireLogin, catchAsync(async (req, res) => {
     const { fuel, electricityUsed, fuelType } = req.body;
     const { id } = req.params;
     const user = await User.findById(id);
+    if (fuel < 0 || electricityUsed < 0 || fuelType == '-') {
+        req.flash('error', "Invalid Data");
+        return res.redirect(`/user/${id}/calculator`);
+
+    }
     user.consumption.push({ fuelType: fuelType, electricityUsed: electricityUsed, fuel: fuel })
     await user.save();
-    res.redirect('/')
+    res.render("data", { fuel, electricityUsed, fuelType, user })
 
 }))
-router.post('/logout', (req, res) => {
+
+router.get('/logout', (req, res) => {
     req.session.user_id = null;
     req.flash('success', "Successfully Logged Out !");
-    res.redirect(`/user/${user._id}>`);
+    res.redirect(`/`);
 
 })
+
 
 router.get('/:id', requireLogin, catchAsync(async (req, res) => {
     const { id } = req.params;
