@@ -1,5 +1,5 @@
 body {
-    height: 100vh;
+    height: 100%;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url("https://images.unsplash.com/photo-1523774294084-94691d7bb289?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     background-size: cover;
@@ -42,4 +42,9 @@ body {
 
 .social:hover {
     color: rgba(255, 255, 255, 0.74)
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: 0.5s;
 }
